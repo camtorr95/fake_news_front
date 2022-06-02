@@ -6,9 +6,6 @@ import VariablesWidget from "./widgets/variables";
 const ResultsPanel = (props) => {
   return (
     <div>
-      <div>
-        <button onClick={props.handleGoBack}>back</button>
-      </div>
       <h1>Resultados</h1>
       <h2>{props.headline}</h2>
       <div>

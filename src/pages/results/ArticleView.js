@@ -1,5 +1,5 @@
 const ArticleView = (props) => {
-  return <p>{props.article}</p>;
+  return <div>{props.article}</div>;
 };
 
 export default ArticleView;

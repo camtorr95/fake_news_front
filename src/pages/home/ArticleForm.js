@@ -41,6 +41,7 @@ const ArticleForm = (props) => {
           name="headline"
           value={headline}
           onChange={(event) => setHeadline(event.target.value)}
+          required
         ></input>
         <label htmlFor="article">Artículo:</label>
         <textarea
@@ -48,6 +49,7 @@ const ArticleForm = (props) => {
           name="article"
           value={article}
           onChange={(event) => setArticle(event.target.value)}
+          required
         ></textarea>
         <label htmlFor="topic">Topic:</label>
         <select
@@ -55,6 +57,7 @@ const ArticleForm = (props) => {
           name="topic"
           value={topic}
           onChange={(event) => setTopic(event.target.value)}
+          required
         >
           {topics.map((topic, i) => (
             <option value={topic} key={i}>
