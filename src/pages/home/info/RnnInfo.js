@@ -34,7 +34,7 @@ const RnnInfo = (props) => {
           <GraficaWidget
             header="Histograma del total de palabras por artículo"
             source="/rnn/histograma.png"
-            descripcion="Dada la distribución, para el entrenamiento se emplearon artículos con un máximo de 920 palabras (más del 90% de los artículos)."
+            descripcion="Dada la distribución, para el entrenamiento se emplearon artículos con un máximo de 900 palabras (más del 90% de los artículos)."
           />
         </div>
       </div>
@@ -50,7 +50,7 @@ const RnnInfo = (props) => {
           <GraficaWidget
             header="Curva ROC"
             source="/rnn/auc.jpeg"
-            descripcion="El área bajo la curva de este modelo es de 0.70"
+            descripcion="El área bajo la curva de este modelo es de 0.75"
           />
         </div>
       </div>

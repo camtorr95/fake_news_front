@@ -85,6 +85,14 @@ const ArticleForm = (props) => {
           </fieldset>
         </div>
       </form>
+      {props.hasResults ? (
+        <div className="alert alert-dismissible alert-success mt-3">
+          <strong>Well done!</strong> Procesado Exitosamente. Ya se pueden
+          consultar los resultados.
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

@@ -17,14 +17,15 @@ const ResultsPanel = (props) => {
         </div>
         <div className="row">
           <SingleValueWidget
+            color="green"
             header="Catboost Probability"
             value={props.results.probability.catboost}
-            footer="Probabilidad de ser un artículo falso, basada en ensambles de árboles"
+            description="Probabilidad de ser un artículo falso, basada en ensambles de árboles"
           ></SingleValueWidget>
           <SingleValueWidget
             header="RNN Probability"
             value={props.results.probability.rnn}
-            footer="Probabilidad de ser un artículo falso, Probabilidad basada en redes neuronales"
+            description="Probabilidad de ser un artículo falso, Probabilidad basada en redes neuronales"
           ></SingleValueWidget>
           <div></div>
         </div>
@@ -42,24 +43,24 @@ const ResultsPanel = (props) => {
           <SingleValueWidget
             header="Headline Polarity"
             value={props.results.sentiment.headline.polarity}
-            footer="Polaridad del Título"
+            description="La Polaridad busca determinar si el sentimiento expresado en el texto es positivo (1), neutral (0) o negativo (-1)"
           ></SingleValueWidget>
           <SingleValueWidget
             header="Headline Subjetivity"
             value={props.results.sentiment.headline.subjetivity}
-            footer="Subjetividad del Título"
+            description="La Subjetividad busca indicar el grado de opinión del texto, donde cero (0) es un valor neutral"
           ></SingleValueWidget>
         </div>
         <div className="row">
           <SingleValueWidget
             header="Text Polarity"
             value={props.results.sentiment.text.polarity}
-            footer="Polaridad promedio del artículo"
+            description="La Polaridad busca determinar si el sentimiento expresado en el texto es positivo (1), neutral (0) o negativo (-1). Aqui se promedia el sentimiento de todas las frases."
           ></SingleValueWidget>
           <SingleValueWidget
             header="Text Subjetivity"
             value={props.results.sentiment.text.subjetivity}
-            footer="Subjetividad promedio del artículo"
+            description="La Subjetividad busca indicar el grado de opinión del texto, donde cero (0) es un valor neutral. Aqui se promedia la subjetividad de todas las frases."
           ></SingleValueWidget>
         </div>
         <div className="row text-center">

@@ -12,7 +12,7 @@ const VariablesWidget = (props) => {
           {Object.entries(props.variables).map((entry) => (
             <tr key={entry[0]}>
               <td>{entry[0]}</td>
-              <td>{entry[1]}</td>
+              <td>{entry[1].toFixed(4)}</td>
             </tr>
           ))}
         </tbody>

@@ -123,7 +123,10 @@ const App = () => {
             <Route
               index
               element={
-                <ArticleForm handleArticleRequest={handleArticleRequest} />
+                <ArticleForm
+                  hasResults={hasResults}
+                  handleArticleRequest={handleArticleRequest}
+                />
               }
             />
             <React.Fragment>
