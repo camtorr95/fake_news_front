@@ -1,15 +1,19 @@
-import "./App.css";
-import ArticleForm from "./pages/home/ArticleForm";
 import { useState, useEffect } from "react";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import * as React from "react";
-import ResultsRouter from "./pages/results/ResultsRouter";
-import PagesRouter from "./pages/PagesRouter";
 import predict from "./controller/requests";
+import MyNavbar from "./Navbar";
+import ArticleForm from "./pages/home/ArticleForm";
+import CatboostInfo from "./pages/home/info/CatboostInfo";
+import RnnInfo from "./pages/home/info/RnnInfo";
+import ArticleView from "./pages/results/ArticleView";
+import ResultsPanel from "./pages/results/ResultsPanel";
+import EdaInfo from "./pages/home/info/EdaInfo";
 
 const App = () => {
   const [topic, setTopic] = useState([]);
   const [headline, setHeadline] = useState([]);
-  const [article, setArticle] = useState([]);
+  const [article, setArticle] = useState("");
   const [results, setResults] = useState({});
   const [hasResults, setHasResults] = useState(false);
 
@@ -112,19 +116,52 @@ const App = () => {
   };
 
   return (
-    <div>
-      <div>
-        <PagesRouter
-          handleArticleRequest={handleArticleRequest}
-          topic={topic}
-          headline={headline}
-          article={article}
-          results={results}
-          hasResults={hasResults}
-          featureImportance={featureImportance}
-        ></PagesRouter>
-      </div>
-    </div>
+    <React.Fragment>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MyNavbar />}>
+            <Route
+              index
+              element={
+                <ArticleForm handleArticleRequest={handleArticleRequest} />
+              }
+            />
+            <React.Fragment>
+              {hasResults ? (
+                <React.Fragment>
+                  <Route
+                    path="articulo"
+                    element={
+                      <ArticleView headline={headline} article={article} />
+                    }
+                  ></Route>
+                  <Route
+                    path="resultados"
+                    element={
+                      <ResultsPanel
+                        results={results}
+                        topic={topic}
+                        headline={headline}
+                        hasResults={hasResults}
+                      />
+                    }
+                  ></Route>
+                </React.Fragment>
+              ) : (
+                <React.Fragment />
+              )}
+            </React.Fragment>
+            <Route path="infoEda" element={<EdaInfo />}></Route>
+            <Route
+              path="infoCatboost"
+              element={<CatboostInfo featureImportance={featureImportance} />}
+            ></Route>
+            <Route path="infoRnn" element={<RnnInfo />}></Route>
+            <Route path="*" element={<Navigate replace to="/" />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </React.Fragment>
   );
 };
 

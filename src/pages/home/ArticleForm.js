@@ -32,40 +32,58 @@ const ArticleForm = (props) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="headline">Título del Artículo:</label>
-        <input
-          type="text"
-          id="headline"
-          name="headline"
-          value={headline}
-          onChange={(event) => setHeadline(event.target.value)}
-          required
-        ></input>
-        <label htmlFor="article">Artículo:</label>
-        <textarea
-          id="article"
-          name="article"
-          value={article}
-          onChange={(event) => setArticle(event.target.value)}
-          required
-        ></textarea>
-        <label htmlFor="topic">Topic:</label>
-        <select
-          id="topic"
-          name="topic"
-          value={topic}
-          onChange={(event) => setTopic(event.target.value)}
-          required
-        >
-          {topics.map((topic, i) => (
-            <option value={topic} key={i}>
-              {topic}
-            </option>
-          ))}
-        </select>
-        <input type="submit" value="Submit" />
+    <div className="container pt-3">
+      <form onSubmit={(event) => handleSubmit(event)}>
+        <div className="form-group">
+          <fieldset>
+            <label className="form-label mt-3" htmlFor="topic">
+              Topic:
+            </label>
+            <select
+              className="form-select"
+              id="topic"
+              name="topic"
+              value={topic}
+              onChange={(event) => setTopic(event.target.value)}
+              required
+            >
+              {topics.map((topic, i) => (
+                <option value={topic} key={i}>
+                  {topic}
+                </option>
+              ))}
+            </select>
+            <label className="form-label mt-3" htmlFor="headline">
+              Título del Artículo:
+            </label>
+            <input
+              className="form-control"
+              type="text"
+              id="headline"
+              name="headline"
+              value={headline}
+              onChange={(event) => setHeadline(event.target.value)}
+              required
+            ></input>
+            <label className="form-label mt-3" htmlFor="article">
+              Artículo:
+            </label>
+            <textarea
+              className="form-control"
+              rows="10"
+              id="article"
+              name="article"
+              value={article}
+              onChange={(event) => setArticle(event.target.value)}
+              required
+            ></textarea>
+            <input
+              className="source-button btn btn-primary btn-xs mt-3"
+              type="submit"
+              value="Submit"
+            />
+          </fieldset>
+        </div>
       </form>
     </div>
   );
